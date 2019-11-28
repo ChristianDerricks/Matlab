@@ -192,7 +192,11 @@ function m2t_export(axis_name, fig_name, tex_name, iterator, tikz)
 
       if isfield(tikz, 'makelegend') && tikz.makelegend == 1 
         use_regexp_on_file = regexprep(use_regexp_on_file, '\\end{axis}', ['\\legend{', tikz.legend, '}%\n' , '\\end{axis}']);
+        if (!isfield(tikz, 'barplot') || tikz.barplot == 0) && (!isfield(tikz, 'boxplot') || tikz.boxplot == 0)
+          use_regexp_on_file = regexprep(use_regexp_on_file, ', forget plot]', ']');
+        end
       end
+
       % special legend for boxplots
       if not(isfield(tikz, 'barplot')) || tikz.barplot == 0
         if not(isfield(tikz, 'markersizedatapoints')) || not(isnumeric(tikz.markersizedatapoints))
