@@ -1,6 +1,6 @@
-This is a small collection of functions to make the work with Matlab and Octave a little easier when it comes to figures and exporting (many of) them. There are also a few lines of code that help when dealing with matlab2tikz and some special needs.
+This is a small collection of functions to make the work with Matlab and Octave a little easier when it comes to figures and exporting them. There are also a few lines of code that help dealing with matlab2tikz. A standalone texfile can be used immediately for bulding a pdf.
 
-Workflow: Make your figure as usual in Matlab/Octave => export with `matlab2tikz` => compile the `.tex` document => convert `.pdf` to `svg` and `.svg` to `.emf` with a small shell script. Figures will be available in different vector formats useful for everyone. Everything, except making the figures, should be done in a few seconds and result in `.tex`, `.pdf`, `svg` and `.emf` files ready to use (in a thesis, as a standlone image, on a website, in powerpoint or word etc.).
+Workflow: Make your figure almost as usual in Matlab/Octave => export with `matlab2tikz` => compile the `.tex` document (by hand) => convert `.pdf` to `svg` and `.svg` to `.emf` with a small shell script. Figures will be available in different vector formats useful for everyone. Everything, except making the figures, should be done in a few seconds and result in `.tex`, `.pdf`, `svg` and `.emf` files ready to use (in a thesis, as a standlone image, on a website, in powerpoint or word etc.).
 
 
 1. remember the last figure position of all figures if running the program again
