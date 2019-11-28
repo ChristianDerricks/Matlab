@@ -285,10 +285,10 @@ function colorlist = colorlist(varargin);
         colorlist(inx) = {[inx/noc inx/noc inx/noc]};
       end
       
-    % The following lists of colorblind-friendly colors are provided by Paul Tol's
+    % The following lists of colorblind-friendly colors are provided by Paul Tol
     % https://personal.sron.nl/~pault/
     % https://personal.sron.nl/~pault/data/colourschemes.pdf
-    % as a personal preferance black is replaced with a very dark gray color
+    % as a personal preferance black is replaced with a very dark gray
 
     % qualitative color schemes
     case 'qualitative_colors_bright'
