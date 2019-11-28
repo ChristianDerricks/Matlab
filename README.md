@@ -6,4 +6,4 @@ texlive
 
 matlab2tikz (https://github.com/matlab2tikz/matlab2tikz)
 
-This program converts MATLAB®/Octave figures to TikZ/pgfplots figures for smooth integration into LaTeX. 
+
