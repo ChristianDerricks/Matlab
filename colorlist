@@ -70,7 +70,9 @@ function colorlist = colorlist(varargin);
 ## The option @var{'showexample', 1..n} returns a colorlist but also shows an example
 ##
 ## @seealso{pkg image}
-##
+## @seealso{https://jfly.iam.u-tokyo.ac.jp/color/}
+## @seealso{https://personal.sron.nl/~pault/}
+## @seealso{https://personal.sron.nl/~pault/data/colourschemes.pdf}
 ## @end deftypefn
 
   % in Octave the package image is required for grayscale conversion
