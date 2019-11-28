@@ -1,5 +1,6 @@
 #!/bin/bash
 # convert every pdf in this folder to svg and emf
+# this requires pdf2svg and inkscape
 
 echo ""
 for f in *.pdf 
