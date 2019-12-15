@@ -78,12 +78,10 @@ function m2t_export(axis_name, fig_name, tex_name, iterator, tikz)
     end
 
     if isfield(tikz, 'subplot') && tikz.subplot == 1
-      set_noSize = false;
-    else
-      set_noSize = true;
+      tikz.set_noSize = false;
     end
     
-    if set_noSize == true
+    if isfield(tikz, 'set_noSize') && tikz.set_noSize == true
       if (isfield(tikz, 'axisheight') || isfield(tikz, 'axiswidth')) && isfield(tikz, 'subplot') && tikz.subplot == 0
         set_extraAxisOptions = [set_extraAxisOptions; ...
                                 ['at={(0cm,0cm)}'];           ... %from pgf plot manual: The idea is to provide an <coordinate expression> where the axis will be placed. The axis anchor will be placed at <coordinate expression>.
@@ -120,7 +118,7 @@ function m2t_export(axis_name, fig_name, tex_name, iterator, tikz)
       hidestandardlegend = '\pgfplotsset{/pgfplots/every axis plot post/.append style={forget plot}}%';
     else
       hidestandardlegend = '';
-    end    
+    end
 
     % extra code (is only used for standalone tex files)
     set_extraCode = {'%!TEX TS-program = lualatex';     ... % might give a warning in yout Tex enviroment if used for the first time
@@ -156,7 +154,7 @@ function m2t_export(axis_name, fig_name, tex_name, iterator, tikz)
     tex_file_name_standalone = [subfolder, tex_name, '_', num2str(iterator), '.tex'];
     matlab2tikz('encoding',                 'UTF-8',                     ...
                 'filename',                 tex_file_name_standalone,    ...
-                'noSize',                   set_noSize,                  ...
+                'noSize',                   tikz.set_noSize,             ...
                 'showInfo',                 false,                       ...
                 'parseStrings',             false,                       ...
                 'figurehandle',             fig_name,                    ...
@@ -170,7 +168,7 @@ function m2t_export(axis_name, fig_name, tex_name, iterator, tikz)
     tex_file_name_includable = [subfolder, tex_name, '_', num2str(iterator), '.tex'];
     matlab2tikz('encoding',                 'UTF-8',                   ...
                 'filename',                 tex_file_name_includable,  ...
-                'noSize',                   set_noSize,                ...
+                'noSize',                   tikz.set_noSize,           ...
                 'showInfo',                 false,                     ...
                 'parseStrings',             false,                     ...
                 'figurehandle',             fig_name,                  ...
@@ -190,15 +188,17 @@ function m2t_export(axis_name, fig_name, tex_name, iterator, tikz)
       % set fortget plot for all plots and ignore the settings
       %use_regexp_on_file = regexprep(use_regexp_on_file, 'usepackage{pgfplots}', 'usepackage{pgfplots}\n\\pgfplotsset{/pgfplots/every axis plot post/.append style={forget plot}}%');
 
-      if isfield(tikz, 'makelegend') && tikz.makelegend == 1 
-        use_regexp_on_file = regexprep(use_regexp_on_file, '\\end{axis}', ['\\legend{', tikz.legend, '}%\n' , '\\end{axis}']);
-        if (!isfield(tikz, 'barplot') || tikz.barplot == 0) && (!isfield(tikz, 'boxplot') || tikz.boxplot == 0)
-          use_regexp_on_file = regexprep(use_regexp_on_file, ', forget plot]', ']');
+      if isfield(tikz, 'makelegend') && tikz.makelegend == 1
+        if not(isfield(tikz, 'barplot')) || tikz.barplot == 0
+          if not(isfield(tikz, 'boxplot')) || tikz.boxplot == 0
+            use_regexp_on_file = regexprep(use_regexp_on_file, '\\end{axis}', ['\\legend{', tikz.legend, '}%\n' , '\\end{axis}']);
+            use_regexp_on_file = regexprep(use_regexp_on_file, ', forget plot]', ']');
+          end
         end
       end
 
       % special legend for boxplots
-      if not(isfield(tikz, 'barplot')) || tikz.barplot == 0
+      if not(isfield(tikz, 'boxplot')) || tikz.boxplot == 1
         if not(isfield(tikz, 'markersizedatapoints')) || not(isnumeric(tikz.markersizedatapoints))
           tikz.markersizedatapoints = 5;
           disp(['tikz.markersizedatapoints was set automatically to ', num2str(tikz.markersizedatapoints), 'pt due to a missing definition or wrong format']);
