@@ -1,10 +1,6 @@
-This is a small collection of functions to make the work with Matlab and Octave a little easier when handling with figures. There are also a few lines of code that help dealing with matlab2tikz. A standalone texfile can be used immediately for bulding a pdf.
+This is a small collection of functions to make the work with Matlab and Octave a little easier when handling figures. There are also a few lines of code that help dealing with matlab2tikz. A standalone Tex file can be used immediately for bulding a PDF. In additon, for each figure an includeable version is also created that can be used within a LaTex document. There is also a Tex file that includes all includeable figure from an export and is ready for immediate build.
 
-Workflow: Make your figure as usual in Matlab/Octave => export with `matlab2tikz` => compile the `.tex` document (by hand) => convert `.pdf` to `svg` and `.svg` to `.emf` with a small shell script. Figures will be available in three different vector formats useful for everyone. Everything, except making the figures of course, should be done in a few seconds and result in `.tex`, `.pdf`, `svg` and `.emf` files ready to use (in a thesis, as a standlone image, on a website, in powerpoint or word etc.).
-
-
-1. remember the last figure position of all figures if running the program again
-2. automaticall build for all figures a working tex document as "standalone" and one as "includeable" while using a lot of custom changes (that a included as regex, horrible ... I know)
+Workflow: Make your figure as usual in Matlab/Octave => export with `matlab2tikz` => compile the `.tex` document (by hand) => convert `.pdf` to `svg` and `.svg` to `.emf` with a small shell script. Figures will be available in three different vector formats useful for everyone. Everything, except making the figures of course, should be done in a few seconds and provide `.tex`, `.pdf`, `svg` and `.emf` files ready to use (in a thesis, as a standlone image, on a website, in PowerPoint or Word etc.).
 
 
 Installation (must have)
