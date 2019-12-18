@@ -1,3 +1,6 @@
+% This file needs the perms and permn function and
+% of course some files from the pkg repository
+
 function DoE_models()
 
   initialize(); 
