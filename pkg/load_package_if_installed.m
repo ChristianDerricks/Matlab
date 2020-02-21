@@ -2,8 +2,10 @@ function load_package_if_installed(loadpackage)
 
   % This program can load existing installed packages and give hints if there is no match.
   % There ia also a comparison with the packages available on Octave Forge and possible mispell.
-  
+
   % Requierments: EditDistance(string1,string2) from Reza Ahmadzadeh at MATLAB Central File Exchange (https://www.mathworks.com/matlabcentral/fileexchange/39049-edit-distance-algorithm)
+
+  % Hint: You might need to replace (string1(i) == string2(j)) with strcmp(string1(i), string2(j)) in line 29 of EditDistance
 
   % Use 1: load_package_if_installed('statistics')
   % Use 2: load_package_if_installed('stathistics')
@@ -74,7 +76,7 @@ function load_package_if_installed(loadpackage)
             for inx = 1:1:max(size(bestmatchpos))
               % Avoid double output
               if (strfind(bestmatches, oct_forge_pkgs{bestmatchpos(1,inx),1}) >= 0)
-                
+                % Not filled yet
               else
                 bestmatches = [bestmatches, oct_forge_pkgs{bestmatchpos(1,inx),1}, ', '];
               end
