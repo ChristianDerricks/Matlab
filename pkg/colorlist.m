@@ -133,6 +133,7 @@ function colorlist = colorlist(varargin);
   p = inputParser;
   addParameter(p, 'colorbase',       default_colorbase,       checkcolorbase); 
   addParameter(p, 'grayscale',       default_grayscale,       @(x) isbool(x));
+  addParameter(p, 'greyscale',       default_grayscale,       @(x) isbool(x));
   addParameter(p, 'grayscalesorted', default_grayscalesorted, @(x) isbool(x));
   addParameter(p, 'invsort',         default_invsort,         @(x) isbool(x));
   addParameter(p, 'numberofcolors',  0,                       validScalarIntPosNum);
